@@ -1,0 +1,373 @@
+:root {
+  /* Global Colors */
+  --brown: #574339;
+  --light-background: #F7F7F4;
+  --dark-background: #E8E8DF;
+  --accent: #5F7829;
+  --gray: #7A7972;
+}
+
+/* Custom Selection Highlight */
+::selection {
+  background-color: var(--brown);
+  color: var(--light-background);
+}
+
+html {
+  overflow-y: scroll; /* Force scrollbar to prevent layout shift */
+}
+
+body {
+  background-color: var(--light-background);
+  margin: 0;
+  padding: 0;
+  font-family: "berthold-baskerville-pro", serif; /* Default to Pro Regular */
+  font-weight: 400;
+  font-style: normal;
+  color: var(--brown);
+  font-size: 100%; /* Base size usually 16px */
+}
+
+h1, h3, h4, h5, h6 {
+  font-family: "berthold-baskerville-pro", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+h1 {
+  /* 75pt is approx 100px. 100px / 16px base = 6.25em */
+  font-size: 3.25em; 
+  margin-top: 0; /* Reset default margin for better layout control */
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2em; /* Increased size for better hierarchy */
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+em, i {
+  font-family: "berthold-baskerville-pro", serif;
+  font-weight: inherit; /* Inherit weight from parent */
+  font-style: italic;
+}
+
+/* Special class for Bold Italic if needed later */
+.bold-italic {
+  font-family: "baskerville-bt", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 25px;
+  background-color: var(--brown);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding-left: 10%; /* Match page margin */
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.header-text {
+  color: var(--light-background);
+  font-size: 0.65em; /* Small enough to fit in 20px */
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  opacity: 0.5; /* Slight tracking for readability at small size */
+  margin-right: 0.5em; /* Increased spacing */
+  text-decoration: none; /* Remove default link underline */
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.header-text:hover {
+  opacity: 1;
+}
+
+.header-text-active {
+  color: var(--light-background);
+  font-size: 0.65em;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  opacity: 1; 
+}
+
+.page-grid {
+  display: grid;
+  grid-template-columns: 10% 55% 25% 10%;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 3vw; /* Optically equivalent to side margins */
+}
+
+.main-content {
+  grid-column: 2;
+}
+
+.sidebar {
+  grid-column: 3;
+  justify-self: start; /* Changed from center to start to push right content left aligned in column */
+  margin-left: 5rem; /* Push into the column a bit */
+  width: 100%; /* Ensure container has width to prevent layout shift */
+  max-width: 200px; /* Constrain width to prevent expansion on bold */
+}
+
+/* Subheader Quote Styles */
+.hero-quote {
+  margin: 0 0 2rem 0;
+  padding: 0;
+  border: none; /* Reset default blockquote styles */
+  color: var(--brown);
+  text-align: left;
+  width: 90%; /* Match body text width */
+}
+
+.hero-quote p {
+  font-family: "berthold-baskerville-pro", serif;
+  font-weight: 400;
+  font-style: italic;
+  /* 20pt approx 26.6px. 26.6 / 16 = 1.6625em */
+  font-size: 1em; 
+  line-height: 1.4;
+  margin: 0 0 0.5rem 0;
+}
+
+.hero-quote cite {
+  display: block;
+  font-family: "berthold-baskerville-pro", serif;
+  font-weight: 400;
+  font-style: normal;
+  /* Same size as quote text: 20pt/26.6px */
+  font-size: .8em;
+  text-transform: uppercase;
+  color: var(--gray); 
+  letter-spacing: 0.05em;
+}
+
+.content-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 4rem; /* Increased spacing below the image */
+}
+
+/* Main Content Text Styling */
+.content-text p {
+  font-family: "berthold-baskerville-pro", serif;
+  font-size: 1rem;
+  width: 90%;
+  max-width: none;
+  line-height: 1.5; /* Tightened from 1.8 to reduce 'airiness' */
+  margin-bottom: 1.5em; /* Matched vertical rhythm */
+  letter-spacing: normal;
+  hanging-punctuation: first last allow-end; /* Enable hanging punctuation */
+}
+
+/* References List Styling */
+.references-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 90%;
+}
+
+.references-list li {
+  margin-bottom: 1rem; 
+  line-height: 1.5;
+  font-family: "berthold-baskerville-pro", serif;
+  font-size: 1rem;
+}
+
+.references-list a {
+  color: var(--brown);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.references-list a:hover {
+  color: var(--accent);
+}
+
+h3 a {
+  color: var(--brown);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+h3 a:hover {
+  color: var(--accent);
+}
+
+.case-study {
+  grid-column: 1 / -1; /* Span entire width of page-grid */
+  background-color: var(--dark-background);
+  padding: 4rem 0;
+  margin-top: 4rem;
+  
+  /* Create nested grid to align content */
+  display: grid;
+  grid-template-columns: 10% 55% 25% 10%;
+  width: 100%;
+}
+
+.case-study > * {
+  grid-column: 2; /* Align content to the main text column */
+}
+
+.section-divider {
+  grid-column: 2; /* Align with main content column only */
+  height: 0.5px;
+  background-color: var(--brown);
+  margin-top: 4rem;
+  width: 90%; /* Match text width */
+  opacity: 0.3;
+}
+
+/* Next Section Link Styles */
+.next-section-link {
+  grid-column: 2;
+  display: inline-flex; /* Shrink to fit content instead of full width */
+  align-items: flex-end; /* Align arrow with baseline */
+  gap: 1rem; /* Space between text and arrow */
+  text-decoration: none;
+  margin-top: 2rem;
+  /* width: 90%; removed to allow shrink-to-fit */
+  color: var(--brown);
+}
+
+.next-link-text {
+  display: block;
+}
+
+.next-section-link:hover .next-arrow {
+  transform: translateX(10px);
+  color: var(--accent);
+}
+
+.next-section-link:hover .next-title {
+  color: var(--accent);
+}
+
+.next-section-link:hover .next-label {
+  color: var(--accent);
+}
+
+.next-label {
+  display: block;
+  font-family: "berthold-baskerville-pro", serif;
+  font-size: 0.65em; /* Matches header-text size */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray);
+  margin-bottom: 0.25rem;
+}
+
+.next-title {
+  display: block;
+  font-family: "berthold-baskerville-pro", serif;
+  font-size: 1.1rem; /* Reduced from 1.5rem */
+  color: var(--brown);
+  font-weight: 400;
+}
+
+.next-arrow {
+  font-family: "berthold-baskerville-pro", serif;
+  font-size: 1.1rem; /* Matched to new title size */
+  transition: transform 0.2s ease;
+}
+
+.site-footer {
+  width: 100%;
+  height: 20px; /* Updated height per request */
+  background-color: var(--brown);
+}
+.toc-menu {
+  margin-top: 5em; /* Approximate offset to align with quote hangline */
+  position: sticky;
+  top: 5rem; /* Sticks 5rem from the top of the viewport */
+}
+
+.toc-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-item {
+  margin-bottom: 1.1rem;
+  padding-left: 0.5rem; /* Default padding */
+  border-left: 2px solid transparent; /* Placeholder for alignment */
+  transition: all 0.2s ease; /* Smooth transition for hover/active states */
+  position: relative; /* For expanding the clickable area */
+}
+
+/* Expand clickable area to include the label */
+.toc-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.toc-label {
+  display: block;
+  font-family: "berthold-baskerville-pro", serif;
+  font-weight: 400;
+  font-size: 0.55em; /* Scaled down from 0.75em */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray);
+  margin-bottom: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.toc-link {
+  display: block;
+  font-family: "berthold-baskerville-pro", serif;
+  font-size: .95rem; /* Scaled down from 1.125rem */
+  color: var(--brown);
+  text-decoration: none;
+  line-height: 1.2;
+  transition: color 0.2s ease; /* Changed transition target */
+}
+
+/* Active State */
+.toc-item.active {
+  border-left-color: var(--accent);
+}
+
+.toc-item.active .toc-label {
+  color: var(--accent);
+}
+
+/* Hover State */
+.toc-item:hover {
+  padding-left: 1rem; /* Slide text to the right */
+  border-left-color: rgba(95, 120, 41, 0.3); /* Show a faint accent border */
+}
+
+.toc-item:hover .toc-link {
+  color: var(--accent);
+  font-style: normal; /* Reset italic */
+  font-weight: 400; /* Reset bold */
+}
+
+.toc-item:hover .toc-label {
+  color: var(--accent);
+  font-style: normal;
+}
