@@ -2,8 +2,8 @@
   /* Global Colors */
   --brown: #574339;
   --light-background: #F7F7F4;
-  --dark-background: #E8E8DF;
-  --accent: #5F7829;
+  --dark-background: #EAE5DF;
+  --accent: #D7816A; /*Options: #EF6351, */
   --gray: #7A7972;
 }
 
@@ -40,14 +40,14 @@
   margin: 0;
   line-height: 1;
   font-weight: 400;
-  color: var(--light-background);
+  color: var(--dark-background);
   margin-bottom: 0.2em;
   opacity: 0.9; /* Slight transparency if needed, but color handles it */
 }
 
 .landing-subtitle-faded {
-  color: var(--light-background);/* Or use opacity on the color */
-  opacity: 0.5;
+  color: var(--dark-background);/* Or use opacity on the color */
+  opacity: 0.7;
 }
 
 .landing-sub-subtitle {
@@ -55,13 +55,14 @@
   font-size: 2em;
   margin: 0 0 1.5em 0;
   font-weight: 400;
-  color: var(--light-background);
+  color: var(--dark-background);
+  opacity: 0.5;
 }
 
 .landing-byline {
   font-family: "berthold-baskerville-pro", serif;
   font-size: 1.1em;
-  margin-bottom: 5em;
+  margin-bottom: 6em;
 }
 
 .landing-intro-text {
@@ -456,7 +457,7 @@ h3 a:hover {
 /* Hover State */
 .toc-item:hover {
   padding-left: 1rem; /* Slide text to the right */
-  border-left-color: rgba(95, 120, 41, 0.3); /* Show a faint accent border */
+  border-left-color: rgba(215, 129, 106, 0.3); /* Show a faint accent border */
 }
 
 .toc-item:hover .toc-link {
@@ -495,23 +496,23 @@ h3 a:hover {
 }
 
 .landing-menu .toc-item.active {
-  border-left-color: var(--light-background);
+  border-left-color: var(--accent);
 }
 
 .landing-menu .toc-item.active .toc-label,
 .landing-menu .toc-item.active .toc-link {
-  color: var(--light-background);
+  color: var(--accent);
   opacity: 1;
 }
 
 .landing-menu .toc-item:hover .toc-link,
 .landing-menu .toc-item:hover .toc-label {
-  color: var(--light-background);
+  color: var(--accent);
   opacity: 1;
 }
 
 .landing-menu .toc-item:hover {
-  border-left-color: rgba(247, 247, 244, 0.3); /* Light background with opacity */
+  border-left-color: rgba(215, 129, 106, 0.3); /* Accent color with opacity */
 }
 
 /* Mobile Menu Styles */
