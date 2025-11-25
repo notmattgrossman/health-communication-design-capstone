@@ -9,8 +9,40 @@
 </head>
 <body>
     <header class="sticky-header">
-        <a href="introduction.html" class="header-text">Design Thinking: Tools for Better Health </a>
-        <span class="header-text-active"> / Co-Design</span>
+        <div class="header-background"></div>
+        <div class="header-content">
+            <a href="introduction.html" class="header-text">Design Thinking: Tools for Better Health </a>
+            <span class="header-text-active"> / Co-Design</span>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false">Menu</button>
+        <nav class="mobile-menu">
+            <ul>
+                <li class="toc-item">
+                    <span class="toc-label">Introduction</span>
+                    <a href="introduction.html" class="toc-link" title="Why Now?">Why Now?</a>
+                </li>
+                <li class="toc-item">
+                    <span class="toc-label">Part One</span>
+                    <a href="empathy.html" class="toc-link" title="Empathy & Localization">Empathy & Localization</a>
+                </li>
+                <li class="toc-item active">
+                    <span class="toc-label">Part Two</span>
+                    <a href="codesign.html" class="toc-link" title="Co-Design">Co-Design</a>
+                </li>
+                <li class="toc-item">
+                    <span class="toc-label">Part Three</span>
+                    <a href="iterating.html" class="toc-link" title="Making & Iterating">The Making-Iterating Loop</a>
+                </li>
+                <li class="toc-item">
+                    <span class="toc-label">Conclusion</span>
+                    <a href="optimism.html" class="toc-link" title="Optimism">Optimism</a>
+                </li>
+                <li class="toc-item">
+                    <span class="toc-label">Credits</span>
+                    <a href="endnotes.html" class="toc-link" title="End Notes">End Notes</a>
+                </li>
+            </ul>
+        </nav>
     </header>
     <main class="page-grid">
         <section class="main-content">
@@ -89,5 +121,6 @@
         </div>
     </main>
     <footer class="site-footer"></footer>
+    <script src="utility/script.js"></script>
 </body>
 </html>

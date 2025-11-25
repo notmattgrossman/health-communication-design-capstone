@@ -14,7 +14,8 @@
   width: 100%;
   background-color: var(--brown);
   display: grid;
-  grid-template-columns: 10% 55% 25% 10%;
+  grid-template-columns: minmax(1rem, 1fr) 5.5fr 2.5fr minmax(1rem, 1fr);
+  column-gap: 2rem;
   align-content: center;
   align-items: start;
 }
@@ -131,12 +132,34 @@ em, i {
   top: 0;
   width: 100%;
   height: 25px;
+  /* background-color: var(--brown); Removed for stacking context fix */
+  z-index: 1001;
+  display: grid;
+  grid-template-columns: minmax(1rem, 1fr) 5.5fr 2.5fr minmax(1rem, 1fr);
+  column-gap: 2rem;
+  align-items: center;
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.header-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-color: var(--brown);
-  z-index: 1000;
+  z-index: 1;
+}
+
+.header-content {
+  grid-column: 2;
   display: flex;
   align-items: center;
-  padding-left: 10%; /* Match page margin */
-  box-sizing: border-box; /* Ensure padding is included in width */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 2;
 }
 
 .header-text {
@@ -167,7 +190,8 @@ em, i {
 
 .page-grid {
   display: grid;
-  grid-template-columns: 10% 55% 25% 10%;
+  grid-template-columns: minmax(1rem, 1fr) 5.5fr 2.5fr minmax(1rem, 1fr);
+  column-gap: 2rem;
   width: 100%;
   min-height: 100vh;
   /* Removed padding-top: 3vw; handled by children margins now */
@@ -183,10 +207,10 @@ em, i {
   grid-column: 3;
   grid-row: 1 / span 3;
   justify-self: start;
-  margin-left: 5rem;
   width: 100%;
-  max-width: 200px;
+  max-width: 300px;
   z-index: 100; /* Ensure it sits on top of landing cover */
+  margin-left: 3rem;
 }
 
 .intro-sidebar {
@@ -291,7 +315,8 @@ h3 a:hover {
   
   /* Create nested grid to align content */
   display: grid;
-  grid-template-columns: 10% 55% 25% 10%;
+  grid-template-columns: minmax(1rem, 1fr) 5.5fr 2.5fr minmax(1rem, 1fr);
+  column-gap: 2rem;
   width: 100%;
 }
 
@@ -449,9 +474,9 @@ h3 a:hover {
 .landing-sidebar {
   grid-column: 3;
   width: 100%;
-  max-width: 200px;
+  max-width: 300px;
   justify-self: start;
-  margin-left: 5rem;
+  margin-left: 3rem;
 }
 
 .landing-menu {
@@ -487,4 +512,187 @@ h3 a:hover {
 
 .landing-menu .toc-item:hover {
   border-left-color: rgba(247, 247, 244, 0.3); /* Light background with opacity */
+}
+
+/* Mobile Menu Styles */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "berthold-baskerville-pro", serif;
+  color: var(--light-background);
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: absolute;
+  right: 2rem;
+  z-index: 1002;
+}
+
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 25px; /* Height of sticky header */
+  left: 0;
+  width: 100%;
+  background-color: var(--brown);
+  padding: 2rem 0;
+  z-index: 0; /* Behind header background (z-1) but visible when translated out */
+  transform: translateY(-120%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu.open {
+  transform: translateY(0);
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.mobile-menu .toc-item {
+  border-left: 2px solid transparent;
+  padding-left: 0.5rem;
+}
+
+.mobile-menu .toc-label {
+  color: var(--light-background);
+  opacity: 0.5;
+}
+
+.mobile-menu .toc-link {
+  color: var(--light-background);
+  opacity: 0.7;
+  font-size: 1.2rem;
+}
+
+.mobile-menu .toc-item.active {
+  border-left-color: var(--light-background);
+}
+
+.mobile-menu .toc-item.active .toc-label,
+.mobile-menu .toc-item.active .toc-link {
+  opacity: 1;
+  color: var(--light-background);
+}
+
+.mobile-menu .toc-item:hover .toc-label,
+.mobile-menu .toc-item:hover .toc-link {
+  opacity: 1;
+  color: var(--light-background);
+}
+
+.mobile-menu .toc-item:hover {
+  padding-left: 1rem;
+  border-left-color: rgba(247, 247, 244, 0.3);
+}
+
+@media (min-width: 1001px) {
+  html {
+    font-size: 120%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .page-grid,
+  .landing-cover,
+  .sticky-header,
+  .case-study {
+    grid-template-columns: 10% 70% 20%;
+    column-gap: 0;
+  }
+
+  .sidebar,
+  .landing-sidebar {
+    display: none;
+  }
+
+  .main-content {
+    grid-row: auto;
+  }
+
+  h1 {
+    font-size: 2.8em;
+    margin-top: 2rem;
+  }
+  
+  .landing-title {
+    font-size: 3.5em;
+  }
+
+  .landing-subtitle {
+    font-size: 3.5em;
+  }
+
+  .landing-sub-subtitle {
+    font-size: 1.8em;
+  }
+
+  .case-study h2 {
+    font-size: 1.8em;
+  }
+}
+
+@media (max-width: 800px) {
+  h1 {
+    font-size: 2.4em;
+  }
+
+  .landing-title {
+    font-size: 3em;
+  }
+
+  .landing-subtitle {
+    font-size: 3em;
+  }
+
+  .landing-sub-subtitle {
+    font-size: 1.6em;
+  }
+
+  .case-study h2 {
+    font-size: 1.6em;
+  }
+}
+
+@media (max-width: 500px) {
+  .page-grid,
+  .landing-cover,
+  .sticky-header,
+  .case-study {
+    grid-template-columns: 10% 75% 15%;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .landing-title {
+    font-size: 2.5em;
+  }
+
+  .landing-subtitle {
+    font-size: 2.5em;
+  }
+
+  .landing-sub-subtitle {
+    font-size: 1.4em;
+  }
+
+  .case-study h2 {
+    font-size: 1.4em;
+  }
 }
