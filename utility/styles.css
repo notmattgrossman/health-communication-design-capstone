@@ -7,6 +7,69 @@
   --gray: #7A7972;
 }
 
+.landing-cover {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--brown);
+  display: grid;
+  grid-template-columns: 10% 55% 25% 10%;
+  align-content: center;
+  align-items: start;
+}
+
+.landing-content {
+  grid-column: 2;
+  color: var(--light-background);
+}
+
+.landing-title {
+  font-family: "berthold-baskerville-pro", serif;
+  font-size: 4em;
+  margin: 0;
+  line-height: 1;
+  font-weight: 400;
+  color: var(--light-background);
+}
+
+.landing-subtitle {
+  font-family: "berthold-baskerville-pro", serif;
+  font-size: 4em;
+  margin: 0;
+  line-height: 1;
+  font-weight: 400;
+  color: var(--light-background);
+  margin-bottom: 0.2em;
+  opacity: 0.9; /* Slight transparency if needed, but color handles it */
+}
+
+.landing-subtitle-faded {
+  color: var(--light-background);/* Or use opacity on the color */
+  opacity: 0.5;
+}
+
+.landing-sub-subtitle {
+  font-family: "berthold-baskerville-pro", serif;
+  font-size: 2em;
+  margin: 0 0 1.5em 0;
+  font-weight: 400;
+  color: var(--light-background);
+}
+
+.landing-byline {
+  font-family: "berthold-baskerville-pro", serif;
+  font-size: 1.1em;
+  margin-bottom: 5em;
+}
+
+.landing-intro-text {
+  font-family: "berthold-baskerville-pro", serif;
+  font-size: 1.1em;
+  line-height: 1.4;
+  max-width: 80%;
+}
+
 /* Custom Selection Highlight */
 ::selection {
   background-color: var(--brown);
@@ -62,6 +125,8 @@ em, i {
 }
 
 .sticky-header {
+  grid-column: 1 / -1;
+  grid-row: 2;
   position: sticky;
   top: 0;
   width: 100%;
@@ -105,19 +170,27 @@ em, i {
   grid-template-columns: 10% 55% 25% 10%;
   width: 100%;
   min-height: 100vh;
-  padding-top: 3vw; /* Optically equivalent to side margins */
+  /* Removed padding-top: 3vw; handled by children margins now */
 }
 
 .main-content {
   grid-column: 2;
+  grid-row: 3;
+  margin-top: 3vw; /* Added margin to replace page-grid padding */
 }
 
 .sidebar {
   grid-column: 3;
-  justify-self: start; /* Changed from center to start to push right content left aligned in column */
-  margin-left: 5rem; /* Push into the column a bit */
-  width: 100%; /* Ensure container has width to prevent layout shift */
-  max-width: 200px; /* Constrain width to prevent expansion on bold */
+  grid-row: 1 / span 3;
+  justify-self: start;
+  margin-left: 5rem;
+  width: 100%;
+  max-width: 200px;
+  z-index: 100; /* Ensure it sits on top of landing cover */
+}
+
+.intro-sidebar {
+  grid-row: 3;
 }
 
 /* Subheader Quote Styles */
@@ -370,4 +443,48 @@ h3 a:hover {
 .toc-item:hover .toc-label {
   color: var(--accent);
   font-style: normal;
+}
+
+/* Landing Sidebar specific */
+.landing-sidebar {
+  grid-column: 3;
+  width: 100%;
+  max-width: 200px;
+  justify-self: start;
+  margin-left: 5rem;
+}
+
+.landing-menu {
+  position: static;
+  margin-top: 0;
+}
+
+.landing-menu .toc-link {
+  color: var(--light-background);
+  opacity: 0.7;
+}
+
+.landing-menu .toc-label {
+  color: var(--light-background);
+  opacity: 0.5;
+}
+
+.landing-menu .toc-item.active {
+  border-left-color: var(--light-background);
+}
+
+.landing-menu .toc-item.active .toc-label,
+.landing-menu .toc-item.active .toc-link {
+  color: var(--light-background);
+  opacity: 1;
+}
+
+.landing-menu .toc-item:hover .toc-link,
+.landing-menu .toc-item:hover .toc-label {
+  color: var(--light-background);
+  opacity: 1;
+}
+
+.landing-menu .toc-item:hover {
+  border-left-color: rgba(247, 247, 244, 0.3); /* Light background with opacity */
 }
