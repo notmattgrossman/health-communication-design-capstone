@@ -392,7 +392,7 @@ h3 a:hover {
   background-color: var(--brown);
 }
 .toc-menu {
-  margin-top: 5em; /* Approximate offset to align with quote hangline */
+  margin-top: 8em; /* Approximate offset to align with quote hangline */
   position: sticky;
   top: 5rem; /* Sticks 5rem from the top of the viewport */
 }
