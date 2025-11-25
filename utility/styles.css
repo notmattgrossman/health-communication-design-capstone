@@ -74,7 +74,7 @@
 
 /* Custom Selection Highlight */
 ::selection {
-  background-color: var(--brown);
+  background-color: var(--accent);
   color: var(--light-background);
 }
 
