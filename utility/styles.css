@@ -636,6 +636,7 @@ h3 a:hover {
   
   .landing-title {
     font-size: 3.5em;
+    margin-top: -4rem;
   }
 
   .landing-subtitle {
@@ -644,6 +645,10 @@ h3 a:hover {
 
   .landing-sub-subtitle {
     font-size: 1.8em;
+  }
+
+  .landing-byline {
+    margin-bottom: 2em;
   }
 
   .case-study h2 {
