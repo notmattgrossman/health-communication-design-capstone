@@ -132,7 +132,7 @@ em, i {
   position: sticky;
   top: 0;
   width: 100%;
-  height: 25px;
+  height: 40px;
   /* background-color: var(--brown); Removed for stacking context fix */
   z-index: 1001;
   display: grid;
@@ -165,7 +165,7 @@ em, i {
 
 .header-text {
   color: var(--light-background);
-  font-size: 0.65em; /* Small enough to fit in 20px */
+  font-size: 0.9em; /* Small enough to fit in 20px */
   line-height: 1;
   font-weight: 400;
   letter-spacing: 0.05em;
@@ -182,7 +182,7 @@ em, i {
 
 .header-text-active {
   color: var(--light-background);
-  font-size: 0.65em;
+  font-size: 0.9em;
   line-height: 1;
   font-weight: 400;
   letter-spacing: 0.05em;
@@ -521,24 +521,44 @@ h3 a:hover {
   background: none;
   border: none;
   cursor: pointer;
-  font-family: "berthold-baskerville-pro", serif;
-  color: var(--light-background);
-  font-size: 0.75em;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   position: absolute;
   right: 2rem;
   z-index: 1002;
+  width: 20px;
+  height: 14px;
+  padding: 0;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--light-background);
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-toggle.open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
 }
 
 .mobile-menu {
   display: none;
   position: absolute;
-  top: 25px; /* Height of sticky header */
+  top: 40px; /* Height of sticky header */
   left: 0;
   width: 100%;
   background-color: var(--brown);
-  padding: 2rem 0;
+  padding: 4rem 0;
   z-index: 0; /* Behind header background (z-1) but visible when translated out */
   transform: translateY(-120%);
   transition: transform 0.3s ease-in-out;
@@ -605,7 +625,7 @@ h3 a:hover {
   }
 
   .menu-toggle {
-    display: block;
+    display: flex;
   }
 
   .mobile-menu {

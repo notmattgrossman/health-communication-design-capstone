@@ -23,18 +23,26 @@ document.addEventListener('DOMContentLoaded', () => {
             if (landingBottom <= 50) {
                 menuToggle.style.opacity = '1';
                 menuToggle.style.pointerEvents = 'auto';
-                mobileMenu.style.visibility = 'visible';
+                mobileMenu.style.display = 'block';
+                // Small delay to allow display:block to apply before visibility change (if any other transitions exist)
+                requestAnimationFrame(() => {
+                     mobileMenu.style.visibility = 'visible';
+                });
             } else {
                 menuToggle.style.opacity = '0';
                 menuToggle.style.pointerEvents = 'none';
-                mobileMenu.style.visibility = 'hidden';
                 
-                // Also close the menu if user scrolls back up
+                // Close menu first
                 if (mobileMenu.classList.contains('open')) {
                     mobileMenu.classList.remove('open');
                     menuToggle.classList.remove('open');
                     menuToggle.setAttribute('aria-expanded', 'false');
                 }
+
+                // Wait for transition to finish before hiding completely
+                // But for the flashing issue, we want to hide it immediately if we are scrolling up past the point
+                mobileMenu.style.visibility = 'hidden';
+                mobileMenu.style.display = 'none';
             }
         };
 
