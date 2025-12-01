@@ -287,7 +287,8 @@ em, i {
 /* Animated Link Underlines */
 .content-text a,
 .references-list a,
-.hero-quote a {
+.hero-quote a,
+h3 a {
   color: var(--brown);
   text-decoration: none;
   background-image: linear-gradient(currentColor, currentColor);
@@ -300,22 +301,12 @@ em, i {
 
 .content-text a:hover,
 .references-list a:hover,
-.hero-quote a:hover {
+.hero-quote a:hover,
+h3 a:hover {
   color: var(--accent);
   background-size: 100% 1px;
 }
 
-h3 a {
-  color: var(--brown);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-  transition: color 0.2s ease;
-}
-
-h3 a:hover {
-  color: var(--accent);
-}
 
 .case-study {
   grid-column: 1 / -1; /* Span entire width of page-grid */
@@ -567,7 +558,7 @@ h3 a:hover {
   left: 0;
   width: 100%;
   background-color: var(--brown);
-  padding: 4rem 0;
+  padding: 2rem 0;
   z-index: 0; /* Behind header background (z-1) but visible when translated out */
   transform: translateY(-120%);
   transition: transform 0.3s ease-in-out;
