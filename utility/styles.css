@@ -284,16 +284,25 @@ em, i {
   font-size: 1rem;
 }
 
-.references-list a {
+/* Animated Link Underlines */
+.content-text a,
+.references-list a,
+.hero-quote a {
   color: var(--brown);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-  transition: color 0.2s ease;
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 0.3s ease, color 0.2s ease;
+  padding-bottom: 2px;
 }
 
-.references-list a:hover {
+.content-text a:hover,
+.references-list a:hover,
+.hero-quote a:hover {
   color: var(--accent);
+  background-size: 100% 1px;
 }
 
 h3 a {
