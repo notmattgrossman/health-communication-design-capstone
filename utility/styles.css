@@ -165,7 +165,7 @@ em, i {
 
 .header-text {
   color: var(--light-background);
-  font-size: 0.9em; /* Small enough to fit in 20px */
+  font-size: 0.7em; /* Small enough to fit in 20px */
   line-height: 1;
   font-weight: 400;
   letter-spacing: 0.05em;
@@ -182,7 +182,7 @@ em, i {
 
 .header-text-active {
   color: var(--light-background);
-  font-size: 0.9em;
+  font-size: 0.7em;
   line-height: 1;
   font-weight: 400;
   letter-spacing: 0.05em;
